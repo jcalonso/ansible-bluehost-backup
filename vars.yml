@@ -1,0 +1,10 @@
+    remote_bk_dir: /remote_directory/
+    local_bk_dir: local/directory/
+    db_host: yourDbHost
+    db_user: yourBluehostUsername 
+    db_pass: yourBluehostPassword
+    databases: 
+       - yourBluehostUsername_db1
+       - yourBluehostUsername_db2
+   folders:
+      - public_html/mySite1

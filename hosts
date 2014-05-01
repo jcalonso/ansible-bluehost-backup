@@ -1,0 +1,2 @@
+[bluehost]
+yourBluehostServer.com ansible_ssh_user=yourBluehostUsername
