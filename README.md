@@ -28,7 +28,9 @@ You can filter by tags:
 Optionally create a cron job like this:
 
 Database backups at 9pm every day 
+
 `0 21 * * *    cd /path/to/playbook; ansible-playbook -i hosts bluehostBackup.yml --tags databases`
 
 Folders backups at 9pm every Sunday 
+
 `0 21 * * 7    cd /path/to/playbook; ansible-playbook -i hosts bluehostBackup.yml --tags folders`
