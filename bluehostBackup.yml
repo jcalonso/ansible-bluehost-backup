@@ -20,7 +20,7 @@
         - databases
 
     - name: Compress sites folders
-      command: tar -cvf {{ remote_bk_dir }}{{ item }}.tar {{ item }}
+      command: tar -zcvf {{ remote_bk_dir }}{{ item }}.tar {{ item }}
       with_items: folders
       tags:
         - folders
