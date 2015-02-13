@@ -45,10 +45,10 @@
 
     - name: Send email notification
       local_action: mail msg='System {{ ansible_hostname }} has been successfully backed up.'
-                    subject="Ansible-report"
-                    body="This databases has been backed up {{ databases }}"
-                    from="server@email.com (Bluehost)"
-                    to="Your Name <your@jemail.com>"
+                    subject='Ansible Backup Report'
+                    body='These databases have been backed up {{ databases }}'
+                    from='server@email.com (Bluehost)'
+                    to='{{ your_name }} <{{ your_email }}>'
       ignore_errors: true
       tags:
         - folders

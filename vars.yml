@@ -8,3 +8,5 @@
        - yourBluehostUsername_db2
    folders:
       - public_html/mySite1
+    your_name: yourName
+    your_email: yourEmail
