@@ -1,0 +1,13 @@
+---
+- name: Bluehost backups
+  hosts: bluehost
+  user: root
+  become: true
+  become_user: dbDumper
+  vars_files:
+    - vars.yml
+
+  roles:
+    - { role: ../roles/backupdbs, tags: [ 'dbs' ] }
+    - { role: ../roles/backupfiles, tags: [ 'files' ] }
+    - { role: ../roles/notify, tags: [ 'notify' ] }

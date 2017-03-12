@@ -1,0 +1,20 @@
+---
+- name: Create Backups folder
+  file: path={{ remote_bk_dir }} state=directory
+
+- name: Dump databases
+  mysql_db:
+    login_user: "{{ db_user }}"
+    login_host: "{{ db_host }}"
+    login_password: "{{ db_pass }}"
+    name: "{{ item }}"
+    state: dump
+    target: "{{ remote_bk_dir }}/{{ item }}_db.sql.gz"
+  with_items: "{{ databases }}"
+
+- name: Fetch databases backups
+  become: false
+  fetch: src="{{ remote_bk_dir }}/{{ item }}_db.sql.gz" dest={{ local_bk_dir }}
+  with_items: "{{ databases }}"
+  tags:
+    - databases

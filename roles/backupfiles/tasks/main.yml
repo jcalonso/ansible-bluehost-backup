@@ -1,0 +1,15 @@
+---
+- name: Create Backups folder
+  file: path={{ remote_bk_dir }} state=directory
+
+- name: Compress sites folders
+  command: tar -zcvf {{ remote_bk_dir }}/{{ item.name }}.tar {{ item.folder }}
+  with_items: "{{ folders }}"
+
+- name: Fetch folders backups
+  become: false
+  fetch: src="{{ remote_bk_dir }}/{{ item.name }}.tar" dest="{{ local_bk_dir }}"
+  with_items: "{{ folders }}"
+
+- name: Delete temp backup folder from server
+  file: path="{{ remote_bk_dir }}" state=absent
